@@ -66,7 +66,7 @@ if (!$api->waitForResult()) {
     $api->debout("could not solve captcha", "red");
     $api->debout($api->getErrorMessage());
 } else {
-    $answers =   $api->getTaskSolution();
+    $answers = $api->getTaskSolution();
     foreach ($answers as $key => $value) {
         echo "answer for question '$key' : '$value'\n";
     }

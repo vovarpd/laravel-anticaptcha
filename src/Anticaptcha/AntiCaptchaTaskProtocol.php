@@ -4,8 +4,8 @@ namespace LaravelAnticaptcha\Anticaptcha;
 
 interface AntiCaptchaTaskProtocol {
 
-	public function getPostData();
+    public function getPostData();
 
-	public function getTaskSolution();
+    public function getTaskSolution();
 
 }
