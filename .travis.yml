@@ -7,7 +7,6 @@ dist: trusty
 matrix:
   include:
   - php: '7.1'
-  - php: hhvm
   - php: nightly
   fast_finish: true
 
