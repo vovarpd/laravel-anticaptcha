@@ -1,4 +1,9 @@
 # laravel-anticaptcha
+[![Latest Stable Version](https://poser.pugx.org/vovarpd/laravel-anticaptcha/v/stable)](https://packagist.org/packages/vovarpd/laravel-anticaptcha)
+[![Total Downloads](https://poser.pugx.org/vovarpd/laravel-anticaptcha/downloads)](https://packagist.org/packages/vovarpd/laravel-anticaptcha)
+[![License](https://poser.pugx.org/vovarpd/laravel-anticaptcha/license)](https://packagist.org/packages/vovarpd/laravel-anticaptcha)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vovarpd/laravel-anticaptcha/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vovarpd/laravel-anticaptcha/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/vovarpd/laravel-anticaptcha/badges/build.png?b=master)](https://scrutinizer-ci.com/g/vovarpd/laravel-anticaptcha/build-status/master)
 
 This Laravel package based on:
 
