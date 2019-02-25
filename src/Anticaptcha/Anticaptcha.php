@@ -15,10 +15,10 @@ class Anticaptcha {
     public $taskInfo;
     
     /**
-	 * Submit new task and receive tracking ID
-	 * @return bool
-	 * @throws AnticaptchaException
-	 */
+     * Submit new task and receive tracking ID
+     * @return bool
+     * @throws AnticaptchaException
+     */
     public function createTask() {
         
         $postData = array(
@@ -28,7 +28,7 @@ class Anticaptcha {
         $submitResult = $this->jsonPostRequest("createTask", $postData);
         
         if ($submitResult == false) {
-        	throw new AnticaptchaException('API error');
+            throw new AnticaptchaException('API error');
         }
         
         if ($submitResult->errorId == 0) {
@@ -36,19 +36,19 @@ class Anticaptcha {
             $this->debout("created task with ID {$this->taskId}", "yellow");
             return true;
         } else {
-        	$this->setErrorMessage($submitResult->errorDescription);
-	        throw new AnticaptchaException("API error {$submitResult->errorCode} : {$submitResult->errorDescription}");
+            $this->setErrorMessage($submitResult->errorDescription);
+            throw new AnticaptchaException("API error {$submitResult->errorCode} : {$submitResult->errorDescription}");
         }
         
     }
 
-	/**
-	 * @param int $maxSeconds
-	 * @param int $currentSecond
-	 *
-	 * @return bool
-	 * @throws AnticaptchaException
-	 */
+    /**
+     * @param int $maxSeconds
+     * @param int $currentSecond
+     *
+     * @return bool
+     * @throws AnticaptchaException
+     */
     public function waitForResult($maxSeconds = 300, $currentSecond = 0) {
         $postData = array(
             "clientKey" =>  $this->clientKey,
@@ -64,7 +64,7 @@ class Anticaptcha {
         $postResult = $this->jsonPostRequest("getTaskResult", $postData);
         
         if ($postResult == false) {
-	        throw new AnticaptchaException('API error');
+            throw new AnticaptchaException('API error');
         }
         
         $this->taskInfo = $postResult;
@@ -83,25 +83,25 @@ class Anticaptcha {
                 return true;
             }
             $this->setErrorMessage("unknown API status, update your software");
-	        throw new AnticaptchaException("unknown API status, update your software");
+            throw new AnticaptchaException("unknown API status, update your software");
 
         } else {
             $this->setErrorMessage($this->taskInfo->errorDescription);
-	        throw new AnticaptchaException("API error {$this->taskInfo->errorCode} : {$this->taskInfo->errorDescription}");
+            throw new AnticaptchaException("API error {$this->taskInfo->errorCode} : {$this->taskInfo->errorDescription}");
         }
     }
 
-	/**
-	 * @return bool
-	 * @throws AnticaptchaException
-	 */
+    /**
+     * @return bool
+     * @throws AnticaptchaException
+     */
     public function getBalance() {
         $postData = array(
             "clientKey" =>  $this->clientKey
         );
         $result = $this->jsonPostRequest("getBalance", $postData);
         if ($result == false) {
-	        throw new AnticaptchaException('API error');
+            throw new AnticaptchaException('API error');
         }
         if ($result->errorId == 0) {
             return $result->balance;
@@ -110,13 +110,13 @@ class Anticaptcha {
         }
     }
 
-	/**
-	 * @param $methodName
-	 * @param $postData
-	 *
-	 * @return mixed
-	 * @throws AnticaptchaException
-	 */
+    /**
+     * @param $methodName
+     * @param $postData
+     *
+     * @return mixed
+     * @throws AnticaptchaException
+     */
     public function jsonPostRequest($methodName, $postData) {
         
         
@@ -127,25 +127,25 @@ class Anticaptcha {
         
         
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,"{$this->scheme}://{$this->host}/$methodName");
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($ch,CURLOPT_ENCODING,"gzip,deflate");
-        curl_setopt($ch,CURLOPT_CUSTOMREQUEST, "POST");   
+        curl_setopt($ch, CURLOPT_URL, "{$this->scheme}://{$this->host}/$methodName");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_ENCODING, "gzip,deflate");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");   
         $postDataEncoded = json_encode($postData);
-        curl_setopt($ch,CURLOPT_POSTFIELDS,$postDataEncoded);
-        curl_setopt($ch,CURLOPT_HTTPHEADER, array(
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postDataEncoded);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json; charset=utf-8',     
             'Accept: application/json',     
-            'Content-Length: ' . strlen($postDataEncoded) 
+            'Content-Length: '.strlen($postDataEncoded) 
         ));
-        curl_setopt($ch,CURLOPT_TIMEOUT,30);
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,30);
-        $result =curl_exec($ch);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+        $result = curl_exec($ch);
         $curlError = curl_error($ch);
         
         if ($curlError != "") {
             $this->debout("Network error: $curlError");
-	        throw new AnticaptchaException("Network error: $curlError");
+            throw new AnticaptchaException("Network error: $curlError");
         }
         curl_close($ch);
         return json_decode($result);
@@ -156,7 +156,9 @@ class Anticaptcha {
     }
     
     public function debout($message, $color = "white") {
-        if (!$this->verboseMode) return false;
+        if (!$this->verboseMode) {
+            return false;
+        }
         if ($color != "white" and $color != "") {
             $CLIcolors = array(
                 "cyan" => "0;36",
@@ -174,30 +176,30 @@ class Anticaptcha {
         echo $CLIMsg."\n";
     }
 
-	/**
-	 * @param $message
-	 */
+    /**
+     * @param $message
+     */
     public function setErrorMessage($message) {
         $this->errorMessage = $message;
     }
 
-	/**
-	 * @return mixed
-	 */
+    /**
+     * @return mixed
+     */
     public function getErrorMessage() {
         return $this->errorMessage;
     }
 
-	/**
-	 * @return mixed
-	 */
+    /**
+     * @return mixed
+     */
     public function getTaskId() {
         return $this->taskId;
     }
 
-	/**
-	 * @param $taskId
-	 */
+    /**
+     * @param $taskId
+     */
     public function setTaskId($taskId) {
         $this->taskId = $taskId;
     }

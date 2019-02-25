@@ -21,8 +21,8 @@ if (!isset($data["gt"]) && !isset($data["challange"])) {
     exit;
 }
 
-$challenge  =   $data["challenge"];
-$gt         =   $data["gt"];
+$challenge  = $data["challenge"];
+$gt         = $data["gt"];
 
 echo "setting gt=$gt, challenge=$challenge\n";
 
