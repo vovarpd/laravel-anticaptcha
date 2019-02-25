@@ -29,51 +29,59 @@ class AnticaptchaServiceProvider extends ServiceProvider {
 
 	public function register() {
 
-		$this->app->singleton( NoCaptchaProxyless::class, function ( $app )  {
-			$instance=new NoCaptchaProxyless();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( NoCaptchaProxyless::class, function ( $app ) {
+			$instance = new NoCaptchaProxyless();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
-		$this->app->singleton( NoCaptcha::class, function ( $app )  {
-			$instance=new NoCaptcha();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( NoCaptcha::class, function ( $app ) {
+			$instance = new NoCaptcha();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
-		$this->app->singleton( ImageToText::class, function ( $app )  {
-			$instance=new ImageToText();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( ImageToText::class, function ( $app ) {
+			$instance = new ImageToText();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
-		$this->app->singleton( GeeTestProxyless::class, function ( $app )  {
-			$instance=new GeeTestProxyless();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( GeeTestProxyless::class, function ( $app ) {
+			$instance = new GeeTestProxyless();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
-		$this->app->singleton( GeeTest::class, function ( $app )  {
-			$instance=new GeeTest();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( GeeTest::class, function ( $app ) {
+			$instance = new GeeTest();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
-		$this->app->singleton( FunCaptchaProxyless::class, function ( $app )  {
-			$instance=new FunCaptchaProxyless();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( FunCaptchaProxyless::class, function ( $app ) {
+			$instance = new FunCaptchaProxyless();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
-		$this->app->singleton( FunCaptcha::class, function ( $app )  {
-			$instance=new FunCaptcha();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( FunCaptcha::class, function ( $app ) {
+			$instance = new FunCaptcha();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
-		$this->app->singleton( CustomCaptcha::class, function ( $app )  {
-			$instance=new CustomCaptcha();
-			$instance->setKey(config('anticaptcha.key'));
+		$this->app->singleton( CustomCaptcha::class, function ( $app ) {
+			$instance = new CustomCaptcha();
+			$instance->setKey( config( 'anticaptcha.key' ) );
+
 			return $instance;
 		} );
 
