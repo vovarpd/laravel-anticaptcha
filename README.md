@@ -67,8 +67,8 @@ use LaravelAnticaptcha\Anticaptcha\NoCaptchaProxyless;
 
 public function handle( NoCaptchaProxyless $no_captcha_proxyless ) {
     $no_captcha_proxyless->setVerboseMode(false);
-    $no_captcha_proxyless->setWebsiteURL( $step4link_post );
-    $no_captcha_proxyless->setWebsiteKey( $recaptcha_sitekey );
+    $no_captcha_proxyless->setWebsiteURL( 'https://targetdomain.com' );
+    $no_captcha_proxyless->setWebsiteKey( 'recaptcha_site_key' );
     $no_captcha_proxyless->createTask();
     $taskId = $no_captcha_proxyless->getTaskId();
     $no_captcha_proxyless->waitForResult();
