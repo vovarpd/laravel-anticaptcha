@@ -1,0 +1,33 @@
+{
+  "name": "vchukh/laravel-anticaptcha",
+  "description": "Laravel implementation of anti-captcha.com API",
+  "license": "Apache-2.0",
+  "homepage": "https://www.upwork.com/o/profiles/users/_~0145ce7ea4bc029243/",
+  "keywords": [
+    "Anti-captcha",
+    "Recaptcha",
+    "PHP"
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Volodymyr Chukh",
+      "email": "vovka2008@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LaravelAnticaptcha\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LaravelAnticaptcha\\AnticaptchaServiceProvider"
+      ]
+    }
+  }
+}
